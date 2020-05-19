@@ -1,0 +1,115 @@
+body {
+	/*background: url('img/seminar5.jpg');*/
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: white;
+
+	/*background-image: linear-gradient(to top, rgba(28,84,132,1), rgba(158,235,251,1));*/
+}
+
+
+
+/*PARTIKEL*/
+#particles-js{
+ z-index: 0;
+ position: relative;
+  background-color: rgb(0, 123, 255);
+  background-image: url('');
+  background-size: cover;
+
+  background-repeat: no-repeat;
+}
+
+
+.abu {
+	background-color: rgba(0,0,0,0.80);
+}
+.wr-img {
+	width: 150px;
+	height: 155px;
+	background-color: #f1f1f1;
+}
+
+
+a .oi-circle-x{
+	color: grey;
+}
+.oi-circle-x{
+	margin-top: -13px;
+	float: right;
+	margin-right: -18px;
+
+}
+
+.merah {
+	background-color:#ff2b4e;
+}
+
+.biru {
+	background-color:rgb(0, 123, 255);
+}
+.putih {
+	color: white;
+}
+
+
+.kotak-login {
+	background: white;
+	min-height: 400px;
+	max-height: auto;
+	box-shadow: 0 3px 20px rgba(0,0,0,0.16);
+	overflow: hidden;
+}
+
+.kotak-login .col-lg-4 {
+	padding: 0;
+}
+
+
+.tanya {
+	color: grey;
+	margin-top: -12px;
+	font-size: 14px;
+}
+
+
+
+.gambar {
+	height: 100%;
+	padding: 0px 20px 0px 20px;
+}
+
+.gambar h1 {
+	font-size: 30px;
+	text-align: center;
+	font-weight: 600;
+	margin-top: 25px;
+}
+
+.form-control {
+	font-size: 14px;
+	height: 40px;
+}
+
+
+
+.p-daftar {
+	text-align: center;
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+.bungkus {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 	500px;
+
+}
+
+.putih:hover {
+	color: white;
+}

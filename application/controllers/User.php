@@ -18,11 +18,15 @@ class User extends CI_Controller
         $data['title'] = 'Yukseminar.id | Aplikasi daftar dan buat seminar secara mudah dan gratis';
         $data['user'] = $this->user_model->getDataUser($this->session->userdata('email'));
         $data['tampil_seminar_baru'] = $this->Seminar_model->getDataSeminar();
-        $data['pagination'] = $this->Seminar_model->getAllDataSeminar();
-        $data['tampil_seminar'] = $data['pagination']['data_seminar'];
-        $data['halaman_aktif'] = $data['pagination']['halaman_aktif'];
-        $data['jumlah_halaman'] = $data['pagination']['jumlah_halaman'];
+        // $data['pagination'] = $this->Seminar_model->getAllDataSeminar();
+        // $data['tampil_seminar'] = $data['pagination']['data_seminar'];
+        // $data['halaman_aktif'] = $data['pagination']['halaman_aktif'];
+        // $data['jumlah_halaman'] = $data['pagination']['jumlah_halaman'];
         $data['kategori'] = $this->Seminar_model->getKategori();
+        $seminar = $this->Seminar_model->getSeminarMore();
+        $data['tampil_seminar'] = $seminar['seminar'];
+        $data['halaman'] = $seminar['halaman'];
+        // var_dump($dataa);
         $this->load->view('templates/header_user', $data);
         $this->load->view('user/index',$data);
         $this->load->view('templates/footer_user');
@@ -40,6 +44,17 @@ class User extends CI_Controller
         }
         if ($data['user']['role_user'] == 'pengawas') {
           redirect(base_url('pengawas'));
+        }
+    }
+
+    public function moreSeminar()
+    {
+        $halaman = $this->input->post('halaman');
+        $data = $this->Seminar_model->getSeminarMoreNext($halaman);
+        if (sizeOf($data)>0) {
+          echo json_encode($data);
+        }else{
+          echo null;
         }
     }
 

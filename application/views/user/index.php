@@ -258,8 +258,7 @@
 
           <!--Grid column-->
           <div class="col-md-4 mb-4">
-            <?php foreach($tampil_seminar_baru as $row1): ?>
-            <img src="<?= base_url('assets/'); ?><?= $row1['poster']; ?>" class="img-fluid z-depth-1-half"
+            <img src="<?= base_url('assets/'); ?><?= $tampil_seminar_baru['poster']; ?>" class="img-fluid z-depth-1-half"
               alt="">
 
           </div>
@@ -270,20 +269,19 @@
 
 
             <!-- Main heading -->
-            <h3 class="h3 mb-3"><?= $row1['nama_seminar'] ?></h3>
-            <p><i class="fas fa-calendar-alt pr-1"></i><?= date('l, d F Y', strtotime($row1['jadwal'])) ?> | <?= $row1['waktu'] ?> - Selesai</p>
-            <p><i class="fas fa-map-marker-alt pr-1"></i><?= $row1['tempat_seminar'] ?></p>
+            <h3 class="h3 mb-3"><?= $tampil_seminar_baru['nama_seminar'] ?></h3>
+            <p><i class="fas fa-calendar-alt pr-1"></i><?= date('l, d F Y', strtotime($tampil_seminar_baru['jadwal'])) ?> | <?= $tampil_seminar_baru['waktu'] ?> - Selesai</p>
+            <p><i class="fas fa-map-marker-alt pr-1"></i><?= $tampil_seminar_baru['tempat_seminar'] ?></p>
 
 
             <hr>
 
             <p>
-              <?= $row1['deskripsi_seminar'] ?>
+              <?= $tampil_seminar_baru['deskripsi_seminar'] ?>
             </p>
 
             <!-- CTA -->
-            <a href="<?= base_url('seminar/detailseminar'); ?>/<?= $row1['url_seminar'] ?>"><button class="btn btn-primary" style="margin:0">Lihat Seminar</button></a>
-        <?php endforeach; ?>
+            <a href="<?= base_url('seminar/detailseminar'); ?>/<?= $tampil_seminar_baru['url_seminar'] ?>"><button class="btn btn-primary" style="margin:0">Lihat Seminar</button></a>
           </div>
           <!--Grid column-->
 
@@ -315,13 +313,6 @@
                 <?php foreach ($kategori as $row): ?>
                   <option value="<?= $row['nama_kategori'] ?>"><?= $row['nama_kategori'] ?></option>
                 <?php endforeach; ?>
-                <!-- <option>New Arrivals</option>
-                <option>Sale</option>
-                <option>Ladies</option>
-                <option>Men</option>
-                <option>Clothing</option>
-                <option>Footwear</option>
-                <option>Accessories</option> -->
               </select>
             </div>
           </div>
@@ -343,7 +334,7 @@
 
       <!-- Akhir search form -->
 
-      <div class="row">
+      <div class="row" id="listSeminar">
 
         <?php foreach($tampil_seminar as $row): ?>
         <!-- Awal Card -->
@@ -387,8 +378,12 @@
       </div>
 
 <br>
-<!-- Pagination   -->
+<div id="halaman" data-halaman="<?= $halaman ?>" ></div>
 <nav aria-label="Page navigation example">
+  <button id="more" class="btn btn-primary align-center justify-content-center">More</button>
+</nav>
+<!-- Pagination   -->
+<!-- <nav aria-label="Page navigation example">
   <ul class="pagination pg-blue justify-content-center">
     <li class="page-item">
       <?php
@@ -434,7 +429,7 @@
       </a>
     </li>
   </ul>
-</nav>
+</nav> -->
 <!-- Akhir Pagination -->
       </section>
       <!--Section: Main features & Quick Start-->
@@ -450,3 +445,76 @@
   <!-- JS SEARCHBAR -->
   <script src="<?= base_url('vendor/js/extention/choices.js'); ?>"></script>
   <!-- AKHIR JS SEARCHBAR -->
+  <script>
+      $(document).ready(function(){
+          //ambil halaman
+          var halaman = $("#halaman").data("halaman");
+
+          //ambil base_url dari meta
+          var base_url = $('meta[name=url]').attr("content"); 
+          $("#more").click(function(){
+              $.ajax({
+                  type: "POST",
+                  data: {
+                    halaman:  halaman
+                  },
+                  url: base_url + 'user/moreSeminar',
+                  success: function (result) {
+                    var objResult = JSON.parse(result);
+                    $('#halaman').attr('data-halaman',objResult.halaman);
+                    //tambah halaman
+                    halaman = objResult.halaman;     
+                    if(objResult.seminar.length>0){
+                        //looping data
+                        $.each(objResult.seminar, function (i, v) {
+                          
+                            var objek = `
+                                <div class="col-lg-3 mb-5">
+
+                                    <div class="card">
+
+                                
+
+                                      <div class="view overlay">
+                                        <a href="`+base_url+`seminar/detailSeminar/`+v.url_seminar+`">
+                                        <img class="card-img-top h-100" src="`+base_url+`assets/`+v.poster+`" alt="Card image cap">
+
+                                          <div class="mask rgba-white-slight"></div>
+
+                                      </div>
+
+                            
+                                      <div class="card-body">
+                                        <h5 class="card-title title">`+v.nama_seminar+`</h5>
+                                        </a>
+                                        <p class="card-text desc">`+v.deskripsi_seminar+`</p>
+                                      </div>
+
+                                      <!-- Card footer -->
+                                      <div class="rounded-bottom lighten-3 text-center pt-3 pl-2 pr-3" style="background: #f5f5f5;">
+                                        <ul class="list-unstyled list-inline font-small">
+                                          <li class="list-inline-item pr-2"><i class="fas fa-map-marker-alt pr-1"></i>`+v.tempat_seminar+`</li>
+                                        </ul>
+                                      </div>
+
+                                    </div>
+
+                                </div>
+                            `;
+                            $("#listSeminar").append(objek);
+                            
+                        });
+                    }else{
+                        $('#more').hide();
+                    }
+
+                    
+                    
+                      
+
+                  }
+                });
+          });
+
+      });
+  </script>

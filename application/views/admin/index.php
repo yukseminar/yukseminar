@@ -80,7 +80,12 @@
      
 
       
-      <div class="col-xxl-7 col-lg-6">
+
+
+    </div>
+
+      <div class="row">
+        <div class="col-lg-6">
         <!-- Panel Projects Status -->
         <div class="panel" id="projects-status">
           <div class="panel-heading">
@@ -93,45 +98,31 @@
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <td>ID</td>
+                  <td>#</td>
                   <td>Nama Seminar</td>
-                  <td>Status</td>
+                  <td>Status Seminar</td>
                   <td class="text-left">Penyelenggara</td>
                 </tr>
               </thead>
               <tbody>
+              <?php $i = 1;?>
+              <?php foreach ($getallseminar as $row): ?>
                 <tr>
-                  <td>1</td>
-                  <td>The sun climbing plan</td>
+                  <td><?= $i; ?></td>
+                  <td><?= $row['nama_seminar']; ?></td>
                   <td>
+                    <?php if($row['status'] == 1): ?>
                     <span class="badge badge-success">Diterima</span>
+                    <?php else: ?>
+                    <span class="badge badge-warning">Pending</span> 
+                    <?php endif; ?>
                   </td>
                   <td>
-                    <a href="">Lihat</a>
+                    <?= $row['nama_user']; ?>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Lunar probe project</td>
-                  <td>
-                    <span class="badge badge-warning">Pending</span>
-                  </td>
-                  <td>
-                    <a href="">Lihat</a>
-                  </td>
-                </tr>
-              
-                <tr>
-                  <td>3</td>
-                  <td>Office automatization</td>
-                  <td>
-                    <span class="badge badge-danger">Ditolak</span>
-                  </td>
-                  <td>
-                    <a href="">Lihat</a>
-                  </td>
-                </tr>
-               
+              <?php $i++; ?>
+              <?php endforeach; ?>
               </tbody>
             </table>
           </div>
@@ -139,7 +130,56 @@
         <!-- End Panel Projects Stats -->
       </div>
 
-    </div>
+      <div class="col-lg-6">
+        <!-- Panel Projects Status -->
+        <div class="panel" id="projects-status">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              User Terbaru
+              
+            </h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <td>#</td>
+                  <td>Nama User</td>
+                  <td>Status Akun</td>
+                  <td>Universitas</td>
+                  <td class="text-left">Role</td>
+                </tr>
+              </thead>
+              <tbody>
+              <?php $i = 1;?>
+              <?php foreach ($getalluser as $row): ?>
+                <tr>
+                  <td><?= $i; ?></td>
+                  <td><?= $row['nama_user']; ?></td>
+                  <td>
+                    <?php if($row['is_active'] == 1): ?>
+                      <span class="badge badge-primary">Aktif</span>
+                    <?php else: ?>
+                      <span class="badge badge-danger">Belum Aktif</span>
+                    <?php endif; ?>
+                    
+                  </td>
+                  <td>
+                    <?= $row['universitas']; ?>
+                  </td>
+                  <td>
+                    <?= $row['role_user']; ?>
+                  </td>
+                </tr>
+              <?php $i++; ?>
+              <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!-- End Panel Projects Stats -->
+      </div>
+      </div>
   </div>
 </div>
 <!-- End Page -->

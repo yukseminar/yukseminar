@@ -246,15 +246,18 @@ $(document).ready( function () {
 
     $(".hargainternal").on("focus", function () {
       $('.kode_promo').prop("readonly", false);
-
+      $('.kode_promo').attr("required", true);
     });
 
     $(".hargainternal").on("blur", function() {
       if($('.hargainternal').val() == ""){
         $('.kode_promo').prop("readonly", true);
         $('.kode_promo').val('');
+
+        $('.kode_promo').attr("required", false);
       }else{
         $('.kode_promo').prop("readonly", false);
+        $('.kode_promo').attr("required", true);
       }
     });
 

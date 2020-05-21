@@ -20,6 +20,11 @@ class Admin extends CI_Controller
       if ($data['user']['role_user'] == 'admin') {
         $data['title'] = 'Dashboard';
         $data['getrequestseminarjumlah'] = $this->admin_model->getRequestSeminarJumlah();
+        $data['getallseminar'] = $this->admin_model->getAllSeminar();
+        $data['getalluser'] = $this->admin_model->getAllUser2();
+
+        // var_dump($data['getallseminar']);
+
         $this->load->view('templates/admin/header',$data);
         $this->load->view('templates/admin/topbar',$data);
         $this->load->view('templates/admin/sidebar',$data);
@@ -196,12 +201,20 @@ class Admin extends CI_Controller
     public function datauser(){
       $data['title'] = 'Data User';
 
-
+        $data['getalluser'] = $this->admin_model->getAllUser();
+        // var_dump($data['getalluser']);
         $this->load->view('templates/admin/header',$data);
         $this->load->view('templates/admin/topbar',$data);
         $this->load->view('templates/admin/sidebar',$data);
         $this->load->view('admin/datauser',$data);
         $this->load->view('templates/admin/footer', $data);
+    }
+
+    public function getUserById(){
+      $iduser = $this->input->post('id');
+      
+      $data = $this->admin_model->getuserbyid($iduser);
+      echo json_encode($data);
     }
 
 

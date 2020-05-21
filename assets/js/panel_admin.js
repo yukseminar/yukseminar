@@ -93,6 +93,39 @@ $(document).ready( function () {
 
   })
 
+  //AWAL DETAIL USER
+
+  $('.btn-detail-user').on('click', function(){
+    var idx = $(this).attr('data-iduser');
+
+    $('#modaldetailuser').modal('toggle');
+
+    $.ajax({
+      type: "POST",
+      data: "id="+idx,
+      url : base_url+'admin/getUserById',
+      beforeSend: function(){
+      
+      },
+      success : function(result){
+        var objResult=JSON.parse(result);
+        $('#email').text(objResult.email_user);
+        $('#hp').text(objResult.phone_user);
+        $('#nim').text(objResult.nim_user);
+        $('#jurusan').text(objResult.jurusan);
+        $('#universitas').text(objResult.universitas);
+        $('#alamat').text(objResult.address_user);
+        $('#bday').text(objResult.bday_user);
+        $('#jk').text(objResult.gender_user);
+        $('#created_at').text(objResult.created_at);
+        $('#updated_at').text(objResult.updated_at);
+
+      }
+    });
+  })
+
+  //AKHIR DETAIL USER
+
 
 
 

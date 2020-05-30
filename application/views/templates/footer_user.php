@@ -5,10 +5,10 @@
       <?php if ($this->session->userdata('email')== null): ?>
         <ul class="list-unstyled list-inline text-center py-2">
           <li class="list-inline-item">
-            <h5 class="mb-1">Register for free</h5>
+            <h5 class="mb-1">Daftar Gratis</h5>
           </li>
           <li class="list-inline-item">
-            <a href="<?= base_url('auth/registration'); ?>" class="btn btn-outline-white btn-rounded">Sign up!</a>
+            <a href="<?= base_url('auth/registration'); ?>" class="btn btn-outline-white btn-rounded">Daftar!</a>
           </li>
         </ul>
       <?php endif; ?>

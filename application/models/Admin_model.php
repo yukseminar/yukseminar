@@ -78,4 +78,36 @@ class Admin_model extends CI_Model
 			$data = $seminar->result_array();
 			return $data;
 		}
+
+		public function getAllUserCount()
+		{
+	      
+			$this->db->select('*'); // <-- There is never any reason to write this line!
+			$this->db->from('tuser');
+			$seminar = $this->db->get();
+			$data = $seminar->num_rows();
+			return $data;
+		}
+
+		public function getSeminarDitolakCount()
+		{
+	      
+	    	return $this->db->get_where('tseminar', array('status'=> '2'))->num_rows();
+	    	
+
+		}
+
+		public function getSeminarAktifCount()
+		{
+	      
+	    	return $this->db->get_where('tseminar', array('status'=> '1'))->num_rows();
+	  
+		}
+
+		public function getSeminarAktif()
+		{
+	      	$this->db->order_by("id_seminar", "desc");
+	    	return $this->db->get_where('tseminar', array('status'=> '1'))->result_array();
+	  
+		}
 }

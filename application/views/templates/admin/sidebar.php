@@ -45,7 +45,7 @@
               </li> -->
 
               <li class="site-menu-item">
-                <a class="animsition-link" href="pages/profile-v2.html">
+                <a class="animsition-link" href="<?= base_url('admin/seminarAktif'); ?>">
                   <span class="site-menu-title">Seminar Aktif</span>
                 </a>
               </li>

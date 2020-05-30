@@ -62,19 +62,62 @@
                           
 
                           <div class="modal-body">
-                            <pre>
-                             
-                            Email           : <span id="email"></span>
-                            No. HP          : <span id="hp"></span>
-                            NIM             : <span id="nim"></span>
-                            Jurusan         : <span id="jurusan"></span>
-                            Universitas     : <span id="universitas"></span>
-                            Alamat          : <span id="alamat"></span>
-                            bday            : <span id="bday"></span>
-                            Akun Dibuat     : <span id="created_at"></span>
-                            Terakhir diedit : <span id="updated_at"></span>
-                           
-                            </pre>
+                            <table>
+                              <tr>
+                                <td><strong>Email</strong></td>
+                                <td>:</td>
+                                <td><span id="email"></span></td>
+                              </tr>
+
+                              <tr>
+                                <td><strong>No. HP</strong></td>
+                                <td>:</td>
+                                <td><span id="hp"></span></span></td>
+                              </tr>
+
+                              <tr>
+                                <td><strong>NIM</strong></td>
+                                <td>:</td>
+                                <td><span id="nim"></span></span></td>
+                              </tr>
+
+                              <tr>
+                                <td><strong>Jurusan</strong></td>
+                                <td>:</td>
+                                <td><span id="jurusan"></span></span></td>
+                              </tr>
+
+                              <tr>
+                                <td><strong>Universitas</strong></td>
+                                <td>:</td>
+                                <td><span id="universitas"></span></span></td>
+                              </tr>
+
+                              <tr>
+                                <td><strong>Alamat</strong></td>
+                                <td>:</td>
+                                <td><span id="alamat"></span></span></td>
+                              </tr>
+
+                              <tr>
+                                <td><strong>Bday</strong></td>
+                                <td>:</td>
+                                <td><span id="bday"></span></span></td>
+                              </tr>
+
+                              <tr>
+                                <td><strong>Akun dibuat</strong></td>
+                                <td>:</td>
+                                <td><span id="created_at"></span></span></td>
+                              </tr>
+
+                              <tr>
+                                <td><strong>Terakhir di edit</strong></td>
+                                <td>:</td>
+                                <td><span id="updated_at"></span></span></td>
+                              </tr>
+                            </table>
+                          
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-default btn-pure waves-effect waves-classic" data-dismiss="modal">Close</button>

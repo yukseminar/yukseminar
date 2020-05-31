@@ -6,7 +6,7 @@ class Seminar_model extends CI_Model
 
 	public function getSeminarMore()
 	{
-		$limit = 1 ;
+		$limit = 8 ;
 		$this->db->order_by("id_seminar", "desc");
 		$this->db->limit($limit,0);
 		$data['seminar'] = $this->db->get_where('tseminar', array('buka_pendaftaran' => 1, 'selesai_seminar' => 0,'status' => 1))->result_array();
@@ -14,10 +14,34 @@ class Seminar_model extends CI_Model
 		return $data;
 	}
 
+	public function getSeminarSearchingName($keyword, $id_kategori)
+	{
+		$this->db->order_by("id_seminar", "desc");
+			$this->db->select("*");
+			$this->db->from("tseminar");
+			$this->db->like("nama_seminar", $keyword);
+			$this->db->or_like("tempat_seminar", $keyword);
+		if ($id_kategori == null) {
+			
+		}else{	
+			$this->db->where("kategori_seminar", $id_kategori);
+		}
+		$this->db->where('buka_pendaftaran', 1);
+		$this->db->where('selesai_seminar', 0);
+		$this->db->where('status', 1);
+
+		
+
+		$seminar = $this->db->get();
+		$data['nama_seminar'] = $seminar->result_array();
+
+		return $data;
+	}
+
 	public function getSeminarMoreNext($next)
 	{
-		$limit = 1 ;
-		$next = $next +1;
+		$limit = 8 ;
+		$next = $next +1; //ini buat nambah jumlah halaman
 		$awalData = ($limit * $next) - $limit ;
 		$this->db->order_by("id_seminar", "desc");
 		$this->db->limit($limit,$awalData);

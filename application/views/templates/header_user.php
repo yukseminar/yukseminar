@@ -72,7 +72,7 @@
           <!-- Left -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="<?= base_url(); ?>">Home
+              <a class="nav-link" href="<?= base_url(); ?>">Beranda
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -80,7 +80,7 @@
               <a class="nav-link" href="" id="Tentang" >Tentang</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#" target="_blank">Hubungi Kami</a>
+              <a class="nav-link" href="">Hubungi Kami</a>
             </li>
 
           </ul>

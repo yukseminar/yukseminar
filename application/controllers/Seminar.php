@@ -537,10 +537,16 @@ class Seminar extends CI_Controller
 
           $upload_image = $namaFileBaru;
 
+          $this->load->library('image_lib');
           $config['file_name'] = $namaFileBaru;
-          $config['allowed_types'] = 'gif|jpg|png';
-          $config['max_size']      = '2048';
+          $config['allowed_types'] = 'gif|jpg|png|jpeg';
+          $config['max_size']      = '5000';
           $config['upload_path'] = './assets/img_seminar/';
+          $config['width']     = 2480;
+          $config['height']   = 3508;
+          $this->image_lib->clear();
+          $this->image_lib->initialize($config);
+          $this->image_lib->resize();
 
           $this->load->library('upload', $config);
           if ( ! $this->upload->do_upload('poster'))

@@ -26,6 +26,21 @@ class User extends CI_Controller
         $seminar = $this->Seminar_model->getSeminarMore();
         $data['tampil_seminar'] = $seminar['seminar'];
         $data['halaman'] = $seminar['halaman'];
+
+        //UNTUK SEARCHING
+        if ($this->input->post()) {
+
+          // $keywordkategori = $this->input->post('kategori');
+          $keywordnama = $this->input->post('nama_seminar');
+          $id_kategori = $this->input->post('kategori');
+
+          $seminarnama = $this->Seminar_model->getSeminarSearchingName($keywordnama, $id_kategori);
+
+          $data['tampil_seminar'] = $seminarnama['nama_seminar'];
+
+          // var_dump($data['tampil_seminar']);
+        }
+        //AKHIR UNTUK SEARCHING
         // var_dump($dataa);
         $this->load->view('templates/header_user', $data);
         $this->load->view('user/index',$data);

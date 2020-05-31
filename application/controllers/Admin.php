@@ -22,8 +22,12 @@ class Admin extends CI_Controller
         $data['getrequestseminarjumlah'] = $this->admin_model->getRequestSeminarJumlah();
         $data['getallseminar'] = $this->admin_model->getAllSeminar();
         $data['getalluser'] = $this->admin_model->getAllUser2();
+        $data['getallusercount'] = $this->admin_model->getAllUserCount();
+        $data['getrequestseminarjumlah'] = $this->admin_model->getRequestSeminarJumlah();
+        $data['getseminartolakjumlah'] = $this->admin_model->getSeminarDitolakCount();
+        $data['getseminaraktifjumlah'] = $this->admin_model->getSeminarAktifCount();
 
-        // var_dump($data['getallseminar']);
+        // var_dump($data['getallusercount']);
 
         $this->load->view('templates/admin/header',$data);
         $this->load->view('templates/admin/topbar',$data);
@@ -199,8 +203,8 @@ class Admin extends CI_Controller
     }
 
     public function datauser(){
-      $data['title'] = 'Data User';
-
+        $data['title'] = 'Data User';
+        $data['getrequestseminarjumlah'] = $this->admin_model->getRequestSeminarJumlah();
         $data['getalluser'] = $this->admin_model->getAllUser();
         // var_dump($data['getalluser']);
         $this->load->view('templates/admin/header',$data);
@@ -215,6 +219,20 @@ class Admin extends CI_Controller
       
       $data = $this->admin_model->getuserbyid($iduser);
       echo json_encode($data);
+    }
+
+    public function seminarAktif(){
+      $data['title'] = 'Seminar Aktif';
+      $data['getrequestseminarjumlah'] = $this->admin_model->getRequestSeminarJumlah();
+      $data['getseminaraktif'] = $this->admin_model->getSeminarAktif();
+      // var_dump($data['getseminaraktif']);
+
+      $this->load->view('templates/admin/header',$data);
+      $this->load->view('templates/admin/topbar',$data);
+      $this->load->view('templates/admin/sidebar',$data);
+      $this->load->view('admin/seminaraktif',$data);
+      $this->load->view('templates/admin/footer', $data);
+
     }
 
 

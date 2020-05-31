@@ -10,7 +10,7 @@
               <div class="grey-800 float-left py-10">
                 <i class="icon md-account grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    User
               </div>
-              <span class="float-right grey-700 font-size-30">1,253</span>
+              <span class="float-right grey-700 font-size-30"><?= $getallusercount; ?></span>
             </div>
             <div class="mb-20 grey-500">
               <i class="icon md-long-arrow-up green-500 font-size-16"></i>
@@ -28,7 +28,7 @@
               <div class="grey-800 float-left py-10">
                 <i class="icon md-assignment grey-600 font-size-24 vertical-align-bottom mr-5"></i>                   Seminar aktif
               </div>
-              <span class="float-right grey-700 font-size-30">543</span>
+              <span class="float-right grey-700 font-size-30"><?= $getseminaraktifjumlah; ?></span>
             </div>
             <div class="mb-20 grey-500">
               <i class="icon md-long-arrow-up green-500 font-size-16"></i>
@@ -46,7 +46,7 @@
               <div class="grey-800 float-left py-10">
                 <i class="icon md-delete grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    Tolak Seminar
               </div>
-              <span class="float-right grey-700 font-size-30">124</span>
+              <span class="float-right grey-700 font-size-30"><?= $getseminartolakjumlah; ?></span>
             </div>
             <div class="mb-20 grey-500">
               <i class="icon md-long-arrow-down red-500 font-size-16"></i>             
@@ -64,7 +64,7 @@
               <div class="grey-800 float-left py-10">
                 <i class="icon md-assignment-return grey-600 font-size-24 vertical-align-bottom mr-5"></i>                    Request Seminar
               </div>
-              <span class="float-right grey-700 font-size-30">845</span>
+              <span class="float-right grey-700 font-size-30"><?= $getrequestseminarjumlah; ?></span>
             </div>
             <div class="mb-20 grey-500">
               <i class="icon md-long-arrow-up green-500 font-size-16"></i>                 
